@@ -1,7 +1,13 @@
 "use client";
 import { createMessage } from "@/actions/Message/CreateMessage";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { toast, Toaster } from "sonner";
+
+export type TCreateMessage = {
+  name: string;
+  email: string;
+  message: string;
+};
 
 const ContactPage = () => {
   const {
@@ -9,16 +15,16 @@ const ContactPage = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm<TCreateMessage>();
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onSubmit: SubmitHandler<TCreateMessage> = async (data) => {
     console.log(data);
     try {
       const res = await createMessage(data);
       console.log(res);
       if (res.success) {
         toast.success("Message Sent Successfully");
-        reset()
+        reset();
       }
     } catch (error: any) {
       toast.error(error.message);

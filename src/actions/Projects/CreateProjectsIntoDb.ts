@@ -1,7 +1,9 @@
-"use server"
+"use server";
 
-export const createProjectIntoDb = async (data : any) => {
-    console.log(data)
+import { TCreateProject } from "@/components/CreateProject";
+
+export const createProjectIntoDb = async (data: TCreateProject) => {
+  console.log(data);
   const res = await fetch(`${process.env.BACKEND_URL}/projects`, {
     method: "POST",
     headers: {

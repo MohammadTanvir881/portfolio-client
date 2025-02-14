@@ -2,7 +2,7 @@
 import Image from "next/image";
 import image from "../../assets/1714645740052.jpg";
 import Link from "next/link";
-import { FaDownload, FaDownLong } from "react-icons/fa6";
+import { FaDownload } from "react-icons/fa6";
 const Banner = () => {
   return (
     <div className="container mx-auto">

@@ -9,13 +9,15 @@ const ProjectDetailsPage = async ({
 }) => {
   const { id } = await params;
   console.log(id);
-  const res = await fetch(`${process.env.BACKEND_URL}/projects`);
+  const res = await fetch(`${process.env.BACKEND_URL}/projects`, {
+    cache: "no-cache",
+  });
   const projectData = await res.json();
   console.log(projectData);
   const projectDetails = projectData.data.filter(
-    (projectDetails : TProject) => projectDetails._id === id
+    (projectDetails: TProject) => projectDetails._id === id
   );
-  console.log(projectDetails)
+  console.log(projectDetails);
   return (
     <div>
       <h1 className="text-4xl text-center">

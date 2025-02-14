@@ -6,11 +6,15 @@ import { createProjectIntoDb } from "@/actions/Projects/CreateProjectsIntoDb";
 import { toast, Toaster } from "sonner";
 import { useRouter } from "next/navigation";
 
-export type TCreatePost = {
-  image: string;
+export type TCreateProject = {
+  name: string | null | undefined;
+  email?: string | null | undefined;
+  userImage: string | null | undefined;
   title: string;
-  category: string;
-  content: string;
+  image: string;
+  descriptions: string;
+  liveLink: string;
+  isDeleted?: boolean;
 };
 
 const CreateProject = ({ seasons }: { seasons: TSeasonsProps | null }) => {
@@ -21,9 +25,9 @@ const CreateProject = ({ seasons }: { seasons: TSeasonsProps | null }) => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm<TCreateProject>();
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onSubmit: SubmitHandler<TCreateProject> = async (data) => {
     data.name = seasons?.user?.name;
     data.userImage = seasons?.user?.image;
     data.email = seasons?.user?.email;

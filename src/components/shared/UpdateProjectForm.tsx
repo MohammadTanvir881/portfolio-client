@@ -8,11 +8,11 @@ import { TProject } from "@/Types/Types";
 import { updateProjectIntoDb } from "@/actions/Projects/UpdateProjectIntoDb";
 import { useRouter } from "next/navigation";
 
-export type TCreatePost = {
-  image: string;
+export type TUpdateProject = {
   title: string;
-  category: string;
-  content: string;
+  image: string;
+  descriptions: string;
+  liveLink: string;
 };
 
 const UpdateProjectForm = ({ projectdata }: { projectdata: TProject }) => {
@@ -23,9 +23,9 @@ const UpdateProjectForm = ({ projectdata }: { projectdata: TProject }) => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm<TUpdateProject>();
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onSubmit: SubmitHandler<TUpdateProject> = async (data) => {
     console.log("Form Data:", data);
     try {
       const res = await updateProjectIntoDb(data, _id);

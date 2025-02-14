@@ -14,7 +14,7 @@ const LoginPage = () => {
           </h2>
 
           {/* Google Login Button */}
-          <button onClick={()=>signIn("google", {callbackUrl : `http://localhost:3000/dashboard`})} className="w-full flex items-center justify-center gap-3 bg-white text-gray-700 p-3 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors duration-300">
+          <button onClick={()=>signIn("google", {callbackUrl : `https://port-folio-website-client.vercel.app/dashboard`})} className="w-full flex items-center justify-center gap-3 bg-white text-gray-700 p-3 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors duration-300">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 48 48"
@@ -43,7 +43,7 @@ const LoginPage = () => {
 
           {/* GitHub Login Button */}
           <button onClick={()=>signIn("github" , {
-            callbackUrl : "http://localhost:3000/dashboard"
+            callbackUrl : "https://port-folio-website-client.vercel.app/dashboard"
           })} className="w-full flex items-center justify-center gap-3 bg-gray-800 text-white p-3 rounded-lg hover:bg-gray-900 transition-colors duration-300">
             <svg
               xmlns="http://www.w3.org/2000/svg"

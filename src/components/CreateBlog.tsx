@@ -6,11 +6,15 @@ import { createBlog } from "@/actions/Blogs/CreateBlog";
 import { Toaster, toast } from "sonner";
 import { useRouter } from "next/navigation";
 
-export type TCreatePost = {
-  image: string;
+export type TCreateBlog = {
+  name: string | null | undefined;
+  userImage: string | null | undefined;
   title: string;
-  category: string;
+  email: string | null | undefined;
+  image: string;
   content: string;
+  category: string;
+  isDeleted?: boolean;
 };
 
 const CreateBlog = ({ seasons }: { seasons: TSeasonsProps | null }) => {
@@ -22,9 +26,9 @@ const CreateBlog = ({ seasons }: { seasons: TSeasonsProps | null }) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<TCreateBlog>();
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onSubmit: SubmitHandler<TCreateBlog> = async (data) => {
     data.name = seasons?.user?.name;
     data.userImage = seasons?.user?.image;
     data.email = seasons?.user?.email;

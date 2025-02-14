@@ -8,7 +8,9 @@ const BlogsDetailsPage = async ({
 }) => {
   const { id } = await params;
   //   console.log(id);
-  const blogs = await fetch(`${`${process.env.BACKEND_URL}/blogs`}`);
+  const blogs = await fetch(`${`${process.env.BACKEND_URL}/blogs`}`, {
+    cache: "no-cache",
+  });
   const data = await blogs.json();
   //   console.log("data", data);
   const blogDetails = data.data.filter((blog: TBlog) => blog._id === id);
@@ -22,7 +24,7 @@ const BlogsDetailsPage = async ({
       {/* blog details */}
       <div>
         {blogDetails.map((details: TBlog) => (
-          <BlogDetails details={details}></BlogDetails>
+          <BlogDetails key={details._id} details={details}></BlogDetails>
         ))}
       </div>
     </div>

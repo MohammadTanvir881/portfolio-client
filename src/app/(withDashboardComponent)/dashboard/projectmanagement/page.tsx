@@ -6,7 +6,9 @@ import Link from "next/link";
 import React from "react";
 
 const ProjectManagementPage = async () => {
-  const res = await fetch(`${process.env.BACKEND_URL}/projects`);
+  const res = await fetch(`${process.env.BACKEND_URL}/projects`, {
+    cache: "no-cache",
+  });
   const projects = await res.json();
   //   console.log("projects", projects);
   const user = await getServerSession(authOptions);

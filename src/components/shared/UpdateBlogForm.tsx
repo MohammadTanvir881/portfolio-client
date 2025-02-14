@@ -21,11 +21,11 @@ const UpdateBlogForm = ({ blogdata }: { blogdata: TBlog }) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<TUpdateBlog>();
 
   const router = useRouter();
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onSubmit: SubmitHandler<TUpdateBlog> = async (data) => {
     // console.log("Form Data:", data);
     try {
       const res = await updateBlogIntoDb(data, _id);

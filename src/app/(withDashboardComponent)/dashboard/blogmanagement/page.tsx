@@ -1,14 +1,13 @@
 import BlogManagementComponent from "@/components/BlogManagement/BlogManagementComponent";
-import { Refresh } from "@/components/shared/Refresh/Refresh";
 import { TBlog } from "@/Types/Types";
 import authOptions from "@/utils/authOptions";
 import { getServerSession } from "next-auth";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import React from "react";
 
 const BlogManagementPage = async () => {
-  const res = await fetch(`${process.env.BACKEND_URL}/blogs`);
+  const res = await fetch(`${process.env.BACKEND_URL}/blogs`, {
+    cache: "no-store",
+  });
   const blogs = await res.json();
   //   console.log("blogs", blogs);
   const user = await getServerSession(authOptions);
@@ -18,7 +17,7 @@ const BlogManagementPage = async () => {
     (blog: TBlog) => blog.email === user?.user?.email
   );
 
-  console.log("user blog", userBlogs);
+  // console.log("user blog", userBlogs);
   if (userBlogs.length === 0) {
     return (
       <div className="text-2xl md:text-4xl lg:text-4xl flex justify-center items-center min-h-screen text-center ">
