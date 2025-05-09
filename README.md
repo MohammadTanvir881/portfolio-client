@@ -11,7 +11,7 @@ A full-featured, professional developer portfolio built with the **MERN stack** 
 
 ## 🔗 Live Demo
 
-- 🌐 **Website:** [https://new-portfolio-sage-three.vercel.app](https://new-portfolio-sage-three.vercel.app)
+- 🌐 **Website: https://new-portfolio-sage-three.vercel.app
 
 ---
 
@@ -201,9 +201,7 @@ npm run dev
 
 ---
 
-## 📌 Author Notes
 
-This portfolio not only presents your personal and professional background, but also acts as a content management system (CMS) for managing your own projects, blogs, and messages—all from one place.
 
 ---
 
